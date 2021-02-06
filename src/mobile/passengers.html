@@ -45,13 +45,31 @@
 
         <form class="p-3">
             <div class="form-row align-items-center">
+                
                 <div class="row">
-                    <div class="col-9">
+                    <div class="col-12">
+                        <div class="card mb-3">
+                            <div class="card-header">
+                                Journey Detail (31/01/2021)
+                            </div>
+                            <div class="card-body">
+                                <h6 class="card-title">Chennai to Trichy</h6>
+                                <p class="card-text mb-1">Mahendra City - 7:20 AM</p>
+                                <p class="card-text">Seat(s) :46, 37</p>
+                            </div>
+                        </div>
+                        
+                    </div>
+                </div>
+
+                <div class="row">
+
+                    <div class="col-12">
                         <div class="row mb-5">
                             <div class="bg-light py-2 mb-2">
                                 <span>Contact Details</span>
                             </div>
-                            <div class="col-4 my-1">
+                            <div class="col-12 my-1">
                                 
                                 <div class="input-group">
                                     <div class="input-group-prepend">
@@ -61,17 +79,8 @@
                                         placeholder="Primary Number">
                                 </div>
                             </div>
-                            <div class="col-4 my-1">
-                                
-                                <div class="input-group">
-                                    <div class="input-group-prepend">
-                                        <div class="input-group-text">+91</div>
-                                    </div>
-                                    <input type="number" class="form-control" id="inlineFormInputGroupUsername"
-                                        placeholder="Secondary Number">
-                                </div>
-                            </div>
-                            <div class="col-4 my-1">
+                            
+                            <div class="col-12 my-1">
                                 
                                 <div class="input-group">
                                     <div class="input-group-prepend">
@@ -82,7 +91,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="row mb-5">
+                        <div class="row mb-12">
                             <div class="d-flex justify-content-end mb-2">
                                 <div class="form-check">
                                     <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
@@ -92,7 +101,7 @@
                                 </div>
                             </div>
                             <div class="bg-light py-2 mb-2">
-                                <span>Passenger Details </span>
+                                <span>Passenger Details1 </span>
                             </div>
 
                             <div class="col-3 my-1">
@@ -185,17 +194,6 @@
                                 </div>
                             </div>
                             <div class="col-lg-4 bg-light py-2 mb-2">
-                                <a class="btn btn-light" role="button">
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="flexRadioDefault"
-                                            id="flexRadioDefault2" checked>
-                                        <label class="form-check-label" for="flexRadioDefault2">
-                                            I have read, understood and agree to the terms and conditions
-                                        </label>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="col-lg-4 bg-light py-2 mb-2">
                                 <a class="btn btn-light" data-bs-toggle="collapse" href="#collapseCoupon" role="button"
                                     aria-expanded="false" aria-controls="collapseExample">
                                     <div class="form-check">
@@ -210,19 +208,15 @@
                                         placeholder="Enter the Coupon Code">
                                 </div>
                             </div>
+                            
+                            
                         </div>
                     </div>
-                    <div class="col-3">
-                        <div class="card mb-3">
-                            <div class="card-header">
-                                Journey Detail (31/01/2021)
-                            </div>
-                            <div class="card-body">
-                                <h6 class="card-title">Chennai to Trichy</h6>
-                                <p class="card-text mb-1">Mahendra City - 7:20 AM</p>
-                                <p class="card-text">Seat(s) :46, 37</p>
-                            </div>
-                        </div>
+                    
+                </div>
+
+                <div class="row">
+                    <div class="col-12">
                         <div class="card mb-3">
                             <div class="card-header">
                                 Payment Details
@@ -244,11 +238,27 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="text-center pt-3 "><a href="trips.html"
-                                th:href="Rs{'/bus-tickets/from/chennai/to/madurai'}" class="btn btn-primary">Proceed to
-                                pay</a></div>
+                    </div>
+                    
+                    <div class="col-lg-4 bg-light py-2 mb-2">
+                        <a class="btn btn-light" role="button">
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="flexRadioDefault"
+                                    id="flexRadioDefault2" checked>
+                                <label class="form-check-label" for="flexRadioDefault2">
+                                    I have read, understood and agree to the terms and conditions
+                                </label>
+                            </div>
+                        </a>
+                    </div>
+
+                    <div class="text-center pt-3 ">
+                        <a href="trips.html"  th:href="${'/bus-tickets/from/chennai/to/madurai'}" class="btn btn-primary">Proceed to
+                            pay
+                        </a>
                     </div>
                 </div>
+
             </div>
         </form>
     </div>
