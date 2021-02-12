@@ -1,8 +1,8 @@
 <!doctype html><html lang="en" class="h-100"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content=""><meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors"><meta name="generator" content="Hugo 0.79.0"><title>Book Tickets | Parveen</title><link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous"><style>.plane {
             margin: 20px auto;
-            max-width: 550px;
+            max-width: 300px;
         }
-
+        
         .cockpit {
             height: 250px;
             position: relative;
@@ -10,7 +10,7 @@
             text-align: center;
             border-bottom: 5px solid #d8d8d8;
         }
-
+        
         .cockpit:before {
             content: "";
             display: block;
@@ -23,17 +23,17 @@
             border-right: 5px solid #d8d8d8;
             border-left: 5px solid #d8d8d8;
         }
-
+        
         .cockpit h1 {
             width: 60%;
             margin: 100px auto 35px auto;
         }
-
+        
         .exit {
             position: relative;
             height: 50px;
         }
-
+        
         .exit:before,
         .exit:after {
             /* content: "EXIT"; */
@@ -48,51 +48,49 @@
             top: 50%;
             transform: translate(0, -50%);
         }
-
+        
         .exit:before {
             left: 0;
         }
-
+        
         .exit:after {
             right: 0;
         }
-
+        
         .fuselage {
-            border: 3px solid #d8d8d8;
-            padding: .5rem
-                /* border-right: 5px solid #d8d8d8; */
-                /* border-left: 5px solid #d8d8d8; */
+            border-right: 5px solid #d8d8d8;
+            border-left: 5px solid #d8d8d8;
         }
-
+        
         ol {
             list-style: none;
             padding: 0;
             margin: 0;
         }
-
+        
         .seats {
             display: flex;
-            flex-direction: column-reverse;
+            flex-direction: row;
             flex-wrap: nowrap;
             justify-content: center;
         }
-
+        
         .seat {
             display: flex;
             flex: 0 0 14.2857142857%;
             padding: 5px;
             position: relative;
         }
-
+        
         .seat:nth-child(2) {
-            margin-top: 14.2857142857%;
+            margin-right: 14.2857142857%;
         }
-
+        
         .seat input[type=checkbox] {
             position: absolute;
             opacity: 0;
         }
-
+        
         .seat input[type=checkbox]:checked+label {
             background: #bada55;
             -webkit-animation-name: rubberBand;
@@ -100,13 +98,13 @@
             animation-duration: 300ms;
             animation-fill-mode: both;
         }
-
+        
         .seat input[type=checkbox]:disabled+label {
             background: #dddddd;
             text-indent: -9999px;
             overflow: hidden;
         }
-
+        
         .seat input[type=checkbox]:disabled+label:after {
             content: "X";
             text-indent: 0;
@@ -115,12 +113,12 @@
             left: 50%;
             transform: translate(-50%, 0%);
         }
-
+        
         .seat input[type=checkbox]:disabled+label:hover {
             box-shadow: none;
             cursor: not-allowed;
         }
-
+        
         .seat label {
             display: block;
             position: relative;
@@ -135,7 +133,7 @@
             animation-duration: 300ms;
             animation-fill-mode: both;
         }
-
+        
         .seat label:before {
             content: "";
             position: absolute;
@@ -147,89 +145,75 @@
             background: rgba(255, 255, 255, 0.4);
             border-radius: 3px;
         }
-
+        
         .seat label:hover {
             cursor: pointer;
             box-shadow: 0 0 0px 2px #5C6AFF;
         }
-
+        
         @-webkit-keyframes rubberBand {
             0% {
                 -webkit-transform: scale3d(1, 1, 1);
                 transform: scale3d(1, 1, 1);
             }
-
             30% {
                 -webkit-transform: scale3d(1.25, 0.75, 1);
                 transform: scale3d(1.25, 0.75, 1);
             }
-
             40% {
                 -webkit-transform: scale3d(0.75, 1.25, 1);
                 transform: scale3d(0.75, 1.25, 1);
             }
-
             50% {
                 -webkit-transform: scale3d(1.15, 0.85, 1);
                 transform: scale3d(1.15, 0.85, 1);
             }
-
             65% {
                 -webkit-transform: scale3d(0.95, 1.05, 1);
                 transform: scale3d(0.95, 1.05, 1);
             }
-
             75% {
                 -webkit-transform: scale3d(1.05, 0.95, 1);
                 transform: scale3d(1.05, 0.95, 1);
             }
-
             100% {
                 -webkit-transform: scale3d(1, 1, 1);
                 transform: scale3d(1, 1, 1);
             }
         }
-
+        
         @keyframes rubberBand {
             0% {
                 -webkit-transform: scale3d(1, 1, 1);
                 transform: scale3d(1, 1, 1);
             }
-
             30% {
                 -webkit-transform: scale3d(1.25, 0.75, 1);
                 transform: scale3d(1.25, 0.75, 1);
             }
-
             40% {
                 -webkit-transform: scale3d(0.75, 1.25, 1);
                 transform: scale3d(0.75, 1.25, 1);
             }
-
             50% {
                 -webkit-transform: scale3d(1.15, 0.85, 1);
                 transform: scale3d(1.15, 0.85, 1);
             }
-
             65% {
                 -webkit-transform: scale3d(0.95, 1.05, 1);
                 transform: scale3d(0.95, 1.05, 1);
             }
-
             75% {
                 -webkit-transform: scale3d(1.05, 0.95, 1);
                 transform: scale3d(1.05, 0.95, 1);
             }
-
             100% {
                 -webkit-transform: scale3d(1, 1, 1);
                 transform: scale3d(1, 1, 1);
             }
         }
-
+        
         .rubberBand {
             -webkit-animation-name: rubberBand;
             animation-name: rubberBand;
-        }</style></head><body class="d-flex h-100 text-center"><div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column"><header class="mb-auto"><!-- Fixed navbar --><nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark"><div class="container-fluid"><a class="navbar-brand" href=".">MyTravels</a> <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button><div class="navbar-collapse collapse" id="navbarCollapse" style=""><ul class="navbar-nav me-auto mb-2 mb-md-0"><li class="nav-item active"><a class="nav-link" aria-current="page" href=".">Book Tickets</a></li><li class="nav-item active"><a class="nav-link" aria-current="page" href="manage_ticket.html">Print Tickets</a></li></ul><form class="d-flex"><a class="btn btn-outline-success" href="login.html">Login</a></form></div></div></nav></header><main class="px-3"><div class="container pt-3 pb-2 mt-3 h-100"><div class="row"><div class="col-6"><div class="plane"><!-- <div class="exit exit--front fuselage  invisible">
-                            </div> --><ol class="row cabin fuselage"><li class="col"><ol class="seats" type="A"><li class="seat"><input type="checkbox" id="1A"> <label for="1A">1A</label></li><li class="seat"><input type="checkbox" id="1B"> <label for="1B">1B</label></li><li class="seat"><input type="checkbox" disabled="disabled" id="1D"> <label for="1D">Occupied</label></li><li class="seat"><input type="checkbox" id="1E"> <label for="1E">1E</label></li></ol></li><li class="col"><ol class="seats" type="A"><li class="seat"><input type="checkbox" id="2A"> <label for="2A">2A</label></li><li class="seat"><input type="checkbox" id="2B"> <label for="2B">2B</label></li><li class="seat"><input type="checkbox" id="2D"> <label for="2D">2D</label></li><li class="seat"><input type="checkbox" id="2E"> <label for="2E">2E</label></li></ol></li><li class="col"><ol class="seats" type="A"><li class="seat"><input type="checkbox" id="3A"> <label for="3A">3A</label></li><li class="seat"><input type="checkbox" id="3B"> <label for="3B">3B</label></li><li class="seat"><input type="checkbox" id="3D"> <label for="3D">3D</label></li><li class="seat"><input type="checkbox" id="3E"> <label for="3E">3E</label></li></ol></li><li class="col"><ol class="seats" type="A"><li class="seat"><input type="checkbox" id="4A"> <label for="4A">4A</label></li><li class="seat"><input type="checkbox" id="4B"> <label for="4B">4B</label></li><li class="seat"><input type="checkbox" id="4D"> <label for="4D">4D</label></li><li class="seat"><input type="checkbox" id="4E"> <label for="4E">4E</label></li></ol></li><li class="col"><ol class="seats" type="A"><li class="seat"><input type="checkbox" id="5A"> <label for="5A">5A</label></li><li class="seat"><input type="checkbox" id="5B"> <label for="5B">5B</label></li><li class="seat"><input type="checkbox" id="5D"> <label for="5D">5D</label></li><li class="seat"><input type="checkbox" id="5E"> <label for="5E">5E</label></li></ol></li><li class="col"><ol class="seats" type="A"><li class="seat"><input type="checkbox" id="6A"> <label for="6A">6A</label></li><li class="seat"><input type="checkbox" id="6B"> <label for="6B">6B</label></li><li class="seat"><input type="checkbox" id="6D"> <label for="6D">6D</label></li><li class="seat"><input type="checkbox" id="6E"> <label for="6E">6E</label></li></ol></li><li class="col"><ol class="seats" type="A"><li class="seat"><input type="checkbox" id="7A"> <label for="7A">7A</label></li><li class="seat"><input type="checkbox" id="7B"> <label for="7B">7B</label></li><li class="seat"><input type="checkbox" id="7D"> <label for="7D">7D</label></li><li class="seat"><input type="checkbox" id="7E"> <label for="7E">7E</label></li></ol></li><li class="col"><ol class="seats" type="A"><li class="seat"><input type="checkbox" id="8A"> <label for="8A">8A</label></li><li class="seat"><input type="checkbox" id="8B"> <label for="8B">8B</label></li><li class="seat"><input type="checkbox" id="8D"> <label for="8D">8D</label></li><li class="seat"><input type="checkbox" id="8E"> <label for="8E">8E</label></li></ol></li><li class="col"><ol class="seats" type="A"><li class="seat"><input type="checkbox" id="9A"> <label for="9A">9A</label></li><li class="seat"><input type="checkbox" id="9B"> <label for="9B">9B</label></li><li class="seat"><input type="checkbox" id="9D"> <label for="9D">9D</label></li><li class="seat"><input type="checkbox" id="9E"> <label for="9E">9E</label></li></ol></li><li class="col"><ol class="seats" type="A"><li class="seat"><input type="checkbox" id="10A"> <label for="10A">10A</label></li><li class="seat"><input type="checkbox" id="10B"> <label for="10B">10B</label></li><li class="seat"><input type="checkbox" id="10D"> <label for="10D">10D</label></li><li class="seat"><input type="checkbox" id="10E"> <label for="10E">10E</label></li></ol></li></ol><div class="exit exit--back fuselage invisible"></div></div><div class="plane"><!-- <div class="exit exit--front fuselage  invisible">
-                            </div> --><ol class="row cabin fuselage"><li class="col"><ol class="seats" type="A"><li class="seat"><input type="checkbox" id="1A"> <label for="1A">1A</label></li><li class="seat"><input type="checkbox" id="1B"> <label for="1B">1B</label></li><li class="seat"><input type="checkbox" disabled="disabled" id="1D"> <label for="1D">Occupied</label></li><li class="seat"><input type="checkbox" id="1E"> <label for="1E">1E</label></li></ol></li><li class="col"><ol class="seats" type="A"><li class="seat"><input type="checkbox" id="2A"> <label for="2A">2A</label></li><li class="seat"><input type="checkbox" id="2B"> <label for="2B">2B</label></li><li class="seat"><input type="checkbox" id="2D"> <label for="2D">2D</label></li><li class="seat"><input type="checkbox" id="2E"> <label for="2E">2E</label></li></ol></li><li class="col"><ol class="seats" type="A"><li class="seat"><input type="checkbox" id="3A"> <label for="3A">3A</label></li><li class="seat"><input type="checkbox" id="3B"> <label for="3B">3B</label></li><li class="seat"><input type="checkbox" id="3D"> <label for="3D">3D</label></li><li class="seat"><input type="checkbox" id="3E"> <label for="3E">3E</label></li></ol></li><li class="col"><ol class="seats" type="A"><li class="seat"><input type="checkbox" id="4A"> <label for="4A">4A</label></li><li class="seat"><input type="checkbox" id="4B"> <label for="4B">4B</label></li><li class="seat"><input type="checkbox" id="4D"> <label for="4D">4D</label></li><li class="seat"><input type="checkbox" id="4E"> <label for="4E">4E</label></li></ol></li><li class="col"><ol class="seats" type="A"><li class="seat"><input type="checkbox" id="5A"> <label for="5A">5A</label></li><li class="seat"><input type="checkbox" id="5B"> <label for="5B">5B</label></li><li class="seat"><input type="checkbox" id="5D"> <label for="5D">5D</label></li><li class="seat"><input type="checkbox" id="5E"> <label for="5E">5E</label></li></ol></li><li class="col"><ol class="seats" type="A"><li class="seat"><input type="checkbox" id="6A"> <label for="6A">6A</label></li><li class="seat"><input type="checkbox" id="6B"> <label for="6B">6B</label></li><li class="seat"><input type="checkbox" id="6D"> <label for="6D">6D</label></li><li class="seat"><input type="checkbox" id="6E"> <label for="6E">6E</label></li></ol></li><li class="col"><ol class="seats" type="A"><li class="seat"><input type="checkbox" id="7A"> <label for="7A">7A</label></li><li class="seat"><input type="checkbox" id="7B"> <label for="7B">7B</label></li><li class="seat"><input type="checkbox" id="7D"> <label for="7D">7D</label></li><li class="seat"><input type="checkbox" id="7E"> <label for="7E">7E</label></li></ol></li><li class="col"><ol class="seats" type="A"><li class="seat"><input type="checkbox" id="8A"> <label for="8A">8A</label></li><li class="seat"><input type="checkbox" id="8B"> <label for="8B">8B</label></li><li class="seat"><input type="checkbox" id="8D"> <label for="8D">8D</label></li><li class="seat"><input type="checkbox" id="8E"> <label for="8E">8E</label></li></ol></li><li class="col"><ol class="seats" type="A"><li class="seat"><input type="checkbox" id="9A"> <label for="9A">9A</label></li><li class="seat"><input type="checkbox" id="9B"> <label for="9B">9B</label></li><li class="seat"><input type="checkbox" id="9D"> <label for="9D">9D</label></li><li class="seat"><input type="checkbox" id="9E"> <label for="9E">9E</label></li></ol></li><li class="col"><ol class="seats" type="A"><li class="seat"><input type="checkbox" id="10A"> <label for="10A">10A</label></li><li class="seat"><input type="checkbox" id="10B"> <label for="10B">10B</label></li><li class="seat"><input type="checkbox" id="10D"> <label for="10D">10D</label></li><li class="seat"><input type="checkbox" id="10E"> <label for="10E">10E</label></li></ol></li></ol><div class="exit exit--back fuselage invisible"></div></div></div></div></div></main><footer class="mt-auto text-white-50"><span class="text-muted">Place sticky footer content here.</span></footer></div><script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script></body></html>
+        }</style></head><body class="d-flex h-100 text-center"><div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column"><header class="mb-auto"><!-- Fixed navbar --><nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark"><div class="container-fluid"><a class="navbar-brand" href=".">MyTravels</a> <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button><div class="navbar-collapse collapse" id="navbarCollapse" style=""><ul class="navbar-nav me-auto mb-2 mb-md-0"><li class="nav-item active"><a class="nav-link" aria-current="page" href=".">Book Tickets</a></li><li class="nav-item active"><a class="nav-link" aria-current="page" href="manage_ticket.html">Print Tickets</a></li></ul><form class="d-flex"><a class="btn btn-outline-success" href="login.html">Login</a></form></div></div></nav></header><main class="px-3"><div class="container pt-3 pb-2 mt-3 h-100"><div class="row"><div class="col-6"><div class="plane"><div class="exit exit--front fuselage"></div><ol class="cabin fuselage"><li class="row row--1"><ol class="seats" type="A"><li class="seat"><input type="checkbox" id="1A"> <label for="1A">1A</label></li><li class="seat"><input type="checkbox" id="1B"> <label for="1B">1B</label></li><li class="seat"><input type="checkbox" disabled="disabled" id="1D"> <label for="1D">Occupied</label></li><li class="seat"><input type="checkbox" id="1E"> <label for="1E">1E</label></li></ol></li><li class="row row--2"><ol class="seats" type="A"><li class="seat"><input type="checkbox" id="2A"> <label for="2A">2A</label></li><li class="seat"><input type="checkbox" id="2B"> <label for="2B">2B</label></li><li class="seat"><input type="checkbox" id="2D"> <label for="2D">2D</label></li><li class="seat"><input type="checkbox" id="2E"> <label for="2E">2E</label></li></ol></li><li class="row row--3"><ol class="seats" type="A"><li class="seat"><input type="checkbox" id="3A"> <label for="3A">3A</label></li><li class="seat"><input type="checkbox" id="3B"> <label for="3B">3B</label></li><li class="seat"><input type="checkbox" id="3D"> <label for="3D">3D</label></li><li class="seat"><input type="checkbox" id="3E"> <label for="3E">3E</label></li></ol></li><li class="row row--4"><ol class="seats" type="A"><li class="seat"><input type="checkbox" id="4A"> <label for="4A">4A</label></li><li class="seat"><input type="checkbox" id="4B"> <label for="4B">4B</label></li><li class="seat"><input type="checkbox" id="4D"> <label for="4D">4D</label></li><li class="seat"><input type="checkbox" id="4E"> <label for="4E">4E</label></li></ol></li><li class="row row--5"><ol class="seats" type="A"><li class="seat"><input type="checkbox" id="5A"> <label for="5A">5A</label></li><li class="seat"><input type="checkbox" id="5B"> <label for="5B">5B</label></li><li class="seat"><input type="checkbox" id="5D"> <label for="5D">5D</label></li><li class="seat"><input type="checkbox" id="5E"> <label for="5E">5E</label></li></ol></li><li class="row row--6"><ol class="seats" type="A"><li class="seat"><input type="checkbox" id="6A"> <label for="6A">6A</label></li><li class="seat"><input type="checkbox" id="6B"> <label for="6B">6B</label></li><li class="seat"><input type="checkbox" id="6D"> <label for="6D">6D</label></li><li class="seat"><input type="checkbox" id="6E"> <label for="6E">6E</label></li></ol></li><li class="row row--7"><ol class="seats" type="A"><li class="seat"><input type="checkbox" id="7A"> <label for="7A">7A</label></li><li class="seat"><input type="checkbox" id="7B"> <label for="7B">7B</label></li><li class="seat"><input type="checkbox" id="7D"> <label for="7D">7D</label></li><li class="seat"><input type="checkbox" id="7E"> <label for="7E">7E</label></li></ol></li><li class="row row--8"><ol class="seats" type="A"><li class="seat"><input type="checkbox" id="8A"> <label for="8A">8A</label></li><li class="seat"><input type="checkbox" id="8B"> <label for="8B">8B</label></li><li class="seat"><input type="checkbox" id="8D"> <label for="8D">8D</label></li><li class="seat"><input type="checkbox" id="8E"> <label for="8E">8E</label></li></ol></li><li class="row row--9"><ol class="seats" type="A"><li class="seat"><input type="checkbox" id="9A"> <label for="9A">9A</label></li><li class="seat"><input type="checkbox" id="9B"> <label for="9B">9B</label></li><li class="seat"><input type="checkbox" id="9D"> <label for="9D">9D</label></li><li class="seat"><input type="checkbox" id="9E"> <label for="9E">9E</label></li></ol></li><li class="row row--10"><ol class="seats" type="A"><li class="seat"><input type="checkbox" id="10A"> <label for="10A">10A</label></li><li class="seat"><input type="checkbox" id="10B"> <label for="10B">10B</label></li><li class="seat"><input type="checkbox" id="10D"> <label for="10D">10D</label></li><li class="seat"><input type="checkbox" id="10E"> <label for="10E">10E</label></li></ol></li></ol><div class="exit exit--back fuselage"></div></div></div></div></div></main><footer class="mt-auto text-white-50"><span class="text-muted">Place sticky footer content here.</span></footer></div><script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script></body></html>
