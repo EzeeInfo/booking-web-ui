@@ -23,7 +23,15 @@ function fetchOperators() {
             const tr = document.createElement('tr');
             tr.appendChild(createColumn(operator.code));
             tr.appendChild(createColumn(operator.name));
-            tr.appendChild(createColumn(`<span class="btn btn-outline-primary" onclick="currentPlace('${operator.code}','${operator.name}')" id="editModal" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="far fa-edit"></i></span>`))
+            tr.appendChild(createColumn(`<span class="btn btn-outline-primary" onclick="currentPlace('${operator.code}','${operator.name}')" id="editModal" data-bs-toggle="modal" data-bs-target="#exampleModal">
+            <i class="far fa-edit"></i>
+            </span> 
+            <span  >
+            <a class="btn btn-outline-primary" href="http://localhost:8080/${operator.code}" target="_BLANK">
+                <i class="fa fa-eye" aria-hidden="true"></i>
+                </a>
+            </span> 
+            `))
             tBody.appendChild(tr);
         });
     })
