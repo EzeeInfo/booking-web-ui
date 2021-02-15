@@ -76,6 +76,9 @@ function saveOperator() {
             else {
                 create(operator);
             }
+            fetchOperators();
+            document.getElementById("operatorCode").value = "";
+            document.getElementById("operatorName").value = "";
             return [2 /*return*/];
         });
     });
@@ -95,7 +98,6 @@ function create(operator) {
                 case 1:
                     res = _a.sent();
                     data = res.json();
-                    fetchOperators();
                     isUpdate = false;
                     return [2 /*return*/];
             }
@@ -117,7 +119,6 @@ function update(operator) {
                 case 1:
                     res = _a.sent();
                     data = res.json();
-                    fetchOperators();
                     isUpdate = false;
                     return [2 /*return*/];
             }
