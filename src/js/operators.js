@@ -37,13 +37,16 @@ function currentPlace(code, name) {
 
 async function saveOperator() {
     const code = document.getElementById("operatorCode").value;
-    const name = document.getElementById("operatorName").value
+    const name = document.getElementById("operatorName").value;
     const operator = { code, name };
     if (isUpdate) {
         update(operator);
     } else {
         create(operator);
     }
+    fetchOperators();
+    document.getElementById("operatorCode").value = ""
+    document.getElementById("operatorName").value = ""
 }
 
 async function create(operator) {
@@ -55,7 +58,6 @@ async function create(operator) {
         }
     })
     const data = res.json();
-    fetchOperators();
     isUpdate = false;
 }
 
@@ -68,6 +70,5 @@ async function update(operator) {
         }
     })
     const data = res.json();
-    fetchOperators();
     isUpdate = false;
 }
