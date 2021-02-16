@@ -35,9 +35,13 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
         if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
     }
 };
+var exampleModal;
 window.onload = function () {
     fetchOperators();
     document.querySelector('button.btn:nth-child(2)').addEventListener('click', saveOperator);
+    exampleModal = new bootstrap.Modal(document.getElementById('exampleModal'), {
+        keyboard: false
+    });
 };
 var isUpdate = false;
 function createColumn(text) {
@@ -53,7 +57,7 @@ function fetchOperators() {
             var tr = document.createElement('tr');
             tr.appendChild(createColumn(operator.code));
             tr.appendChild(createColumn(operator.name));
-            tr.appendChild(createColumn("<span \n            class=\"btn btn-outline-primary\" \n            onclick=\"currentPlace('" + operator.code + "','" + operator.name + "')\"\n            id=\"editModal\" data-bs-toggle=\"modal\" \n            data-bs-target=\"#exampleModal\">\n            <i class=\"far fa-edit\"></i>\n            </span> \n            <span  >\n            <a class=\"btn btn-outline-primary\" href=\"http://localhost:8080/" + operator.code + "\" target=\"_BLANK\">\n                <i class=\"fa fa-eye\" aria-hidden=\"true\"></i>\n                </a>\n            </span> \n            "));
+            tr.appendChild(createColumn("<span \n            class=\"btn btn-outline-primary\" \n            onclick=\"currentPlace('" + operator.code + "','" + operator.name + "')\"\n            id=\"editModal\" data-bs-toggle=\"modal\" \n            data-bs-target=\"#exampleModal\">\n            <i class=\"far fa-edit\"></i>\n            </span> \n            <span  >\n            <a class=\"btn btn-outline-primary\" href=\"/" + operator.code + "\" target=\"_BLANK\">\n                <i class=\"fa fa-eye\" aria-hidden=\"true\"></i>\n                </a>\n            </span> \n            "));
             tBody.appendChild(tr);
         });
     });
@@ -79,6 +83,7 @@ function saveOperator() {
             fetchOperators();
             document.getElementById("operatorCode").value = "";
             document.getElementById("operatorName").value = "";
+            exampleModal.hide();
             return [2 /*return*/];
         });
     });
