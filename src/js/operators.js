@@ -1,7 +1,11 @@
+var exampleModal;
 window.onload = () => {
     fetchOperators();
     document.querySelector('button.btn:nth-child(2)').addEventListener('click', saveOperator)
 
+    exampleModal = new bootstrap.Modal(document.getElementById('exampleModal'), {
+        keyboard: false
+    })
 };
 
 var isUpdate = false;
@@ -13,6 +17,7 @@ function createColumn(text) {
 }
 
 function fetchOperators() {
+
 
     fetch("/api/operators", {
 
@@ -31,7 +36,7 @@ function fetchOperators() {
             <i class="far fa-edit"></i>
             </span> 
             <span  >
-            <a class="btn btn-outline-primary" href="http://localhost:8080/${operator.code}" target="_BLANK">
+            <a class="btn btn-outline-primary" href="/${operator.code}" target="_BLANK">
                 <i class="fa fa-eye" aria-hidden="true"></i>
                 </a>
             </span> 
@@ -59,6 +64,8 @@ async function saveOperator() {
     fetchOperators();
     document.getElementById("operatorCode").value = ""
     document.getElementById("operatorName").value = ""
+
+    exampleModal.hide();
 }
 
 async function create(operator) {
