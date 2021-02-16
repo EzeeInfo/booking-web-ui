@@ -23,7 +23,11 @@ function fetchOperators() {
             const tr = document.createElement('tr');
             tr.appendChild(createColumn(operator.code));
             tr.appendChild(createColumn(operator.name));
-            tr.appendChild(createColumn(`<span class="btn btn-outline-primary" onclick="currentPlace('${operator.code}','${operator.name}')" id="editModal" data-bs-toggle="modal" data-bs-target="#exampleModal">
+            tr.appendChild(createColumn(`<span 
+            class="btn btn-outline-primary" 
+            onclick="currentPlace('${operator.code}','${operator.name}')"
+            id="editModal" data-bs-toggle="modal" 
+            data-bs-target="#exampleModal">
             <i class="far fa-edit"></i>
             </span> 
             <span  >
