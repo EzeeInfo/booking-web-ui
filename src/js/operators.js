@@ -18,12 +18,12 @@ function createColumn(text) {
 
 function fetchOperators() {
 
-
     fetch("/api/operators", {
 
     }).then(res => res.json()).then(operators => {
         const tBody = document.querySelector('table>tbody');
-        tBody.innerHTML = '';
+
+        if (operators.length > 0) tBody.innerHTML = '';
         operators.map(operator => {
             const tr = document.createElement('tr');
             tr.appendChild(createColumn(operator.code));
@@ -35,10 +35,18 @@ function fetchOperators() {
             data-bs-target="#exampleModal">
             <i class="far fa-edit"></i>
             </span> 
-            <span  >
+            <span>
             <a class="btn btn-outline-primary" href="/${operator.code}" target="_BLANK">
                 <i class="fa fa-eye" aria-hidden="true"></i>
                 </a>
+            </span> 
+            <span 
+            class="btn btn-outline-primary" 
+            data-bs-toggle="modal" 
+            data-bs-target="#deleteModal" >
+            
+                <i class="fa fa-trash" aria-hidden="true"></i>
+                
             </span> 
             `))
             tBody.appendChild(tr);
@@ -57,11 +65,11 @@ async function saveOperator() {
     const name = document.getElementById("operatorName").value;
     const operator = { code, name };
     if (isUpdate) {
-        update(operator);
+        await update(operator);
     } else {
-        create(operator);
+        await create(operator);
     }
-    fetchOperators();
+    await fetchOperators();
     document.getElementById("operatorCode").value = ""
     document.getElementById("operatorName").value = ""
 
@@ -76,8 +84,20 @@ async function create(operator) {
             "Content-type": "application/json; charset=UTF-8"
         }
     })
-    const data = res.json();
+    const data = await res.json();
     isUpdate = false;
+}
+
+async function remove(code) {
+    const res = await fetch("/api/operators/" + code, {
+        method: "DELETE",
+        headers: {
+            "Content-type": "application/json"
+        }
+    })
+    await res.json();
+    await fetchOperators();
+
 }
 
 async function update(operator) {
@@ -88,6 +108,6 @@ async function update(operator) {
             "Content-type": "application/json; charset=UTF-8"
         }
     })
-    const data = res.json();
+    const data = await res.json();
     isUpdate = false;
 }
