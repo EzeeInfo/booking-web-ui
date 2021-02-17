@@ -36,10 +36,15 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 var exampleModal;
+var code;
+var confermationModal;
 window.onload = function () {
     fetchOperators();
     document.querySelector('button.btn:nth-child(2)').addEventListener('click', saveOperator);
     exampleModal = new bootstrap.Modal(document.getElementById('exampleModal'), {
+        keyboard: false
+    });
+    confermationModal = new bootstrap.Modal(document.getElementById('deleteModal'), {
         keyboard: false
     });
 };
@@ -53,11 +58,14 @@ function fetchOperators() {
     fetch("/api/operators", {}).then(function (res) { return res.json(); }).then(function (operators) {
         var tBody = document.querySelector('table>tbody');
         tBody.innerHTML = '';
+        if (operators.length == 0) {
+            tBody.innerHTML = "<tr class=\"text-center\">\n                            <td colspan=\"3\"> <span class=\"text-muted font-italic\"> No Records\n                            Found ... Add your data to <a href=\"\" data-bs-toggle=\"modal\"\n                                data-bs-target=\"#exampleModal\">click here...</a></span></td>\n                        </tr>";
+        }
         operators.map(function (operator) {
             var tr = document.createElement('tr');
             tr.appendChild(createColumn(operator.code));
             tr.appendChild(createColumn(operator.name));
-            tr.appendChild(createColumn("<span \n            class=\"btn btn-outline-primary\" \n            onclick=\"currentPlace('" + operator.code + "','" + operator.name + "')\"\n            id=\"editModal\" data-bs-toggle=\"modal\" \n            data-bs-target=\"#exampleModal\">\n            <i class=\"far fa-edit\"></i>\n            </span> \n            <span  >\n            <a class=\"btn btn-outline-primary\" href=\"/" + operator.code + "\" target=\"_BLANK\">\n                <i class=\"fa fa-eye\" aria-hidden=\"true\"></i>\n                </a>\n            </span> \n            "));
+            tr.appendChild(createColumn("<span \n            class=\"btn btn-outline-primary\" \n            onclick=\"currentPlace('" + operator.code + "','" + operator.name + "')\"\n            id=\"editModal\" data-bs-toggle=\"modal\" \n            data-bs-target=\"#exampleModal\">\n            <i class=\"far fa-edit\"></i>\n            </span> \n            <span>\n            <a class=\"btn btn-outline-primary\" href=\"/" + operator.code + "\" target=\"_BLANK\">\n                <i class=\"fa fa-eye\" aria-hidden=\"true\"></i>\n                </a>\n            </span> \n            <span \n            class=\"btn btn-outline-primary\" \n            data-bs-toggle=\"modal\" \n            onclick=\"deleteOperator('" + operator.code + "')\"\n            data-bs-target=\"#deleteModal\" >\n            \n                <i class=\"fa fa-trash\" aria-hidden=\"true\"></i>\n                \n            </span> \n            "));
             tBody.appendChild(tr);
         });
     });
@@ -71,20 +79,28 @@ function saveOperator() {
     return __awaiter(this, void 0, void 0, function () {
         var code, name, operator;
         return __generator(this, function (_a) {
-            code = document.getElementById("operatorCode").value;
-            name = document.getElementById("operatorName").value;
-            operator = { code: code, name: name };
-            if (isUpdate) {
-                update(operator);
+            switch (_a.label) {
+                case 0:
+                    code = document.getElementById("operatorCode").value;
+                    name = document.getElementById("operatorName").value;
+                    operator = { code: code, name: name };
+                    if (!isUpdate) return [3 /*break*/, 2];
+                    return [4 /*yield*/, update(operator)];
+                case 1:
+                    _a.sent();
+                    return [3 /*break*/, 4];
+                case 2: return [4 /*yield*/, create(operator)];
+                case 3:
+                    _a.sent();
+                    _a.label = 4;
+                case 4: return [4 /*yield*/, fetchOperators()];
+                case 5:
+                    _a.sent();
+                    document.getElementById("operatorCode").value = "";
+                    document.getElementById("operatorName").value = "";
+                    exampleModal.hide();
+                    return [2 /*return*/];
             }
-            else {
-                create(operator);
-            }
-            fetchOperators();
-            document.getElementById("operatorCode").value = "";
-            document.getElementById("operatorName").value = "";
-            exampleModal.hide();
-            return [2 /*return*/];
         });
     });
 }
@@ -102,8 +118,36 @@ function create(operator) {
                     })];
                 case 1:
                     res = _a.sent();
-                    data = res.json();
+                    return [4 /*yield*/, res.json()];
+                case 2:
+                    data = _a.sent();
                     isUpdate = false;
+                    return [2 /*return*/];
+            }
+        });
+    });
+}
+function deleteOperator(operatorCode) {
+    code = operatorCode;
+}
+function remove() {
+    return __awaiter(this, void 0, void 0, function () {
+        var res;
+        return __generator(this, function (_a) {
+            switch (_a.label) {
+                case 0: return [4 /*yield*/, fetch("/api/operators/" + code, {
+                        method: "DELETE",
+                        headers: {
+                            "Content-type": "application/json"
+                        }
+                    })];
+                case 1:
+                    res = _a.sent();
+                    res.json().then(function (d) {
+                        fetchOperators();
+                    });
+                    code = null;
+                    confermationModal.hide();
                     return [2 /*return*/];
             }
         });
@@ -123,7 +167,9 @@ function update(operator) {
                     })];
                 case 1:
                     res = _a.sent();
-                    data = res.json();
+                    return [4 /*yield*/, res.json()];
+                case 2:
+                    data = _a.sent();
                     isUpdate = false;
                     return [2 /*return*/];
             }
