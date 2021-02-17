@@ -1,9 +1,13 @@
-
 var exampleModal;
+var code;
+var confermationModal;
 window.onload = () => {
     fetchOperators();
     document.querySelector('button.btn:nth-child(2)').addEventListener('click', saveOperator)
     exampleModal = new bootstrap.Modal(document.getElementById('exampleModal'), {
+        keyboard: false
+    })
+    confermationModal = new bootstrap.Modal(document.getElementById('deleteModal'), {
         keyboard: false
     })
 };
@@ -22,8 +26,15 @@ function fetchOperators() {
 
     }).then(res => res.json()).then(operators => {
         const tBody = document.querySelector('table>tbody');
+        tBody.innerHTML = '';
+        if (operators.length == 0) {
+            tBody.innerHTML = `<tr class="text-center">
+                            <td colspan="3"> <span class="text-muted font-italic"> No Records
+                            Found ... Add your data to <a href="" data-bs-toggle="modal"
+                                data-bs-target="#exampleModal">click here...</a></span></td>
+                        </tr>`
+        }
 
-        if (operators.length > 0) tBody.innerHTML = '';
         operators.map(operator => {
             const tr = document.createElement('tr');
             tr.appendChild(createColumn(operator.code));
@@ -43,6 +54,7 @@ function fetchOperators() {
             <span 
             class="btn btn-outline-primary" 
             data-bs-toggle="modal" 
+            onclick="deleteOperator('${operator.code}')"
             data-bs-target="#deleteModal" >
             
                 <i class="fa fa-trash" aria-hidden="true"></i>
@@ -87,15 +99,21 @@ async function create(operator) {
     isUpdate = false;
 }
 
-async function remove(code) {
+function deleteOperator(operatorCode) {
+    code = operatorCode;
+}
+async function remove() {
     const res = await fetch("/api/operators/" + code, {
         method: "DELETE",
         headers: {
             "Content-type": "application/json"
         }
     })
-    await res.json();
-    await fetchOperators();
+    res.json().then(d => {
+        fetchOperators();
+    });
+    code = null;
+    confermationModal.hide()
 
 }
 
