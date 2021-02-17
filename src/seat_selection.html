@@ -180,6 +180,17 @@
             animation-name: rubberBand;
         }
     </style>
+
+
+    <script type="text/javascript" th:inline="javascript">
+        /*<![CDATA[*/
+        var data = {
+            busMap: /*[[${busMap == null} ? null : ${busMap}]]*/ ,
+
+        };
+        /*]]>*/
+    </script>
+
 </head>
 
 <body class="d-flex h-100 text-center">
