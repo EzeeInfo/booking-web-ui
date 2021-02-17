@@ -1,8 +1,8 @@
+
 var exampleModal;
 window.onload = () => {
     fetchOperators();
     document.querySelector('button.btn:nth-child(2)').addEventListener('click', saveOperator)
-
     exampleModal = new bootstrap.Modal(document.getElementById('exampleModal'), {
         keyboard: false
     })
@@ -72,7 +72,6 @@ async function saveOperator() {
     await fetchOperators();
     document.getElementById("operatorCode").value = ""
     document.getElementById("operatorName").value = ""
-
     exampleModal.hide();
 }
 
