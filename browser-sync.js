@@ -23,6 +23,9 @@ module.exports = {
         target: "http://localhost:8080",
         proxyRes: [
             function(proxyRes, req, res) {
+                if(url == "bus-ticketets/from/chennai/to/madurai?date=17/04/2020") {
+                    res.redirect = "passengers.html";
+                }
                 console.log(proxyRes.headers);
             }
         ]
