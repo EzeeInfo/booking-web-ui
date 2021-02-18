@@ -17,7 +17,20 @@ function selectStation(e) {
   const toStation = document.getElementById("toStation");
   toStation.innerHTML = "";
   toStation.append(createOption("", "--", true));
-  options.map((option) => {
-    return toStation.append(createOption(option, option));
-  });
+  
+
+  Array.from(document
+    .getElementById("fromStation").options).forEach(function(option_element) {
+    let option_text = option_element.text;
+    let option_value = option_element.value;
+    let is_option_selected = option_element.selected;
+
+    if(options.includes(option_value)) {
+      toStation.append(createOption(option_value, option_text, false));
+    }
+});
+
+
+
+
 }
