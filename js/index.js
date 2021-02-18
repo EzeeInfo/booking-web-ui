@@ -20,7 +20,13 @@ function selectStation(e) {
     var toStation = document.getElementById("toStation");
     toStation.innerHTML = "";
     toStation.append(createOption("", "--", true));
-    options.map(function (option) {
-        return toStation.append(createOption(option, option));
+    Array.from(document
+        .getElementById("fromStation").options).forEach(function (option_element) {
+        var option_text = option_element.text;
+        var option_value = option_element.value;
+        var is_option_selected = option_element.selected;
+        if (options.includes(option_value)) {
+            toStation.append(createOption(option_value, option_text, false));
+        }
     });
 }
