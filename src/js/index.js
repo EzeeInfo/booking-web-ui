@@ -2,6 +2,18 @@ window.onload = () => {
   document
     .getElementById("fromStation")
     .addEventListener("change", selectStation, false);
+
+
+    var today = new Date().toISOString().split('T')[0];
+    var dateFields = document.querySelectorAll("input[type='date']");
+
+    dateFields.forEach(function(userItem) {
+      userItem.min = today;
+    });
+
+
+    
+
 };
 
 function createOption(value = "", text = "--", isSelected = false) {
