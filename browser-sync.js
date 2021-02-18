@@ -19,13 +19,21 @@ module.exports = {
      | https://github.com/shakyShane/browser-sync/wiki/options#wiki-files
      */
     files: ["dist/css/*.css", "dist/js/*.js", "dist/**/*.html"],
+    middleware: [
+        {
+            route: "/bus-tickets",
+            handle: function (req, res, next) {
+                res.writeHead(302, {
+                    location: "passengers.html"
+                });
+                res.end("Redirecting!");
+            }
+        }
+    ],
     proxy: {
         target: "http://localhost:8080",
         proxyRes: [
             function(proxyRes, req, res) {
-                if(url == "bus-ticketets/from/chennai/to/madurai?date=17/04/2020") {
-                    res.redirect = "passengers.html";
-                }
                 console.log(proxyRes.headers);
             }
         ]
