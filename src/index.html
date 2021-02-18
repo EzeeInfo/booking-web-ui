@@ -39,9 +39,9 @@
                                 <a class="nav-link" aria-current="page" href="manage_ticket.html">Print Tickets</a>
                             </li>
                         </ul>
-                        <!-- <form class="d-flex">
+                        <form class="d-flex">
                             <a class="btn btn-outline-success" href="login.html">Login</a>
-                        </form> -->
+                        </form>
                     </div>
                 </div>
             </nav>
@@ -55,13 +55,14 @@
                         <div class="form-floating">
                             <select class="form-select" id="fromStation" aria-label="Floating label select example">
                                 <option selected>--</option>
-                                <option value="chennai" data-to="madurai,trichy" th:each="station : ${fromStations}" th:value="${station.code}"
-                                th:text="${station.name}">Chennai</option>
+                                <option value="chennai" data-to="madurai,trichy" th:each="point : ${points}" 
+                                th:value="${point.station.shortName}"
+                                th:text="${point.station.name}"
+                                th:attr="data-to=${point.destinations}">Chennai</option>
                                 <option value="madurai" data-to="chennai">Madurai</option>
                                 <option value="trichy" data-to="chennai">Trichy</option>
                             </select>
-                            <label for="fromStation">From</label>
-
+                            <label for="toStation">From</label>
                         </div>
                     </div>
 
@@ -89,7 +90,7 @@
                     <div class=" col-lg-2">
                         <div class="form-floating">
                             <input type="date" class="form-control" style="padding-left: 10px" id="rtnfloatingInput">
-                            <label for="floatingInput">Return Date(Optional)</label>
+                            <label for="floatingInput">Return Date</label>
                         </div>
                     </div>
 
