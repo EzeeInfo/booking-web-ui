@@ -72,6 +72,8 @@
                         <div class="form-floating">
                             <select class="form-select" id="floatingSelect" aria-label="Floating label select example">
                                 <option selected>--</option>
+                                <option th:each="station : ${fromStations}" th:value="${station.code}"
+                                th:text="${station.name}" value="1">Chennai</option>
                             </select>
                             <label for="floatingSelect">Destination</label>
                         </div>
