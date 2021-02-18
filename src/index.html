@@ -53,14 +53,14 @@
 
                     <div class=" col-lg-3">
                         <div class="form-floating">
-                            <select class="form-select" id="floatingSelect" aria-label="Floating label select example">
+                            <select class="form-select" id="fromStation" aria-label="Floating label select example">
                                 <option selected>--</option>
                                 <option value="chennai" data-to="madurai,trichy" th:each="station : ${fromStations}" th:value="${station.code}"
                                 th:text="${station.name}">Chennai</option>
                                 <option value="madurai" data-to="chennai">Madurai</option>
                                 <option value="trichy" data-to="chennai">Trichy</option>
                             </select>
-                            <label for="floatingSelect">From</label>
+                            <label for="fromStation">From</label>
 
                         </div>
                     </div>
@@ -72,11 +72,10 @@
 
                     <div class=" col-lg-3">
                         <div class="form-floating">
-                            <select class="form-select" id="floatingSelect" aria-label="Floating label select example">
+                            <select class="form-select" id="toStation" aria-label="Floating label select example">
                                 <option selected>--</option>
-                                
                             </select>
-                            <label for="floatingSelect">Destination</label>
+                            <label for="toStation">Destination</label>
                         </div>
                     </div>
 
