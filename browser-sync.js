@@ -19,6 +19,17 @@ module.exports = {
      | https://github.com/shakyShane/browser-sync/wiki/options#wiki-files
      */
     files: ["dist/css/*.css", "dist/js/*.js", "dist/**/*.html"],
+    middleware: [
+        {
+            route: "/bus-tickets",
+            handle: function (req, res, next) {
+                res.writeHead(302, {
+                    location: "passengers.html"
+                });
+                res.end("Redirecting!");
+            }
+        }
+    ],
     proxy: {
         target: "http://localhost:8080",
         proxyRes: [
