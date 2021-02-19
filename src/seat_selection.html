@@ -182,13 +182,14 @@
     </style>
 
 
-    <script type="text/javascript" th:inline="javascript">
-        /*<![CDATA[*/
-        var data = {
-            busMap: /*[[${busMap == null} ? null : ${busMap}]]*/ ,
+<script th:inline="javascript">
+    /*<![CDATA[*/
 
-        };
-        /*]]>*/
+    
+        var busMap = /*[[${busMap}]]*/ null;
+    
+
+    /*]]>*/
     </script>
 
 </head>
@@ -199,17 +200,17 @@
             <!-- Fixed navbar -->
             <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
                 <div class="container-fluid">
-                    <a class="navbar-brand" href=".">MyTravels</a>
+                    <a class="navbar-brand" href="." th:text="${operator.name}" th:href="${'/' + operator.code}">MyTravels</a>
                     <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button>
                     <div class="navbar-collapse collapse" id="navbarCollapse" style="">
                         <ul class="navbar-nav me-auto mb-2 mb-md-0">
                             <li class="nav-item active">
-                                <a class="nav-link" aria-current="page" href=".">Book Tickets</a>
+                                <a class="nav-link" aria-current="page" href="." th:href="${'/' + operator.code}">Book Tickets</a>
                             </li>
                             <li class="nav-item active">
-                                <a class="nav-link" aria-current="page" href="manage_ticket.html">Print Tickets</a>
+                                <a class="nav-link" aria-current="page" href="manage_ticket.html" th:href="${'/' + operator.code + '/bus-tickets/manage/print'}">Print Tickets</a>
                             </li>
                         </ul>
                         <form class="d-flex">

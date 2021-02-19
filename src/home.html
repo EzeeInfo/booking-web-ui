@@ -24,7 +24,7 @@
             <!-- Fixed navbar -->
             <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
                 <div class="container-fluid">
-                    <a class="navbar-brand" href=".">MyTravels</a>
+                    <a class="navbar-brand" href="." th:text="${operator.name}" th:href="${'/' + operator.code}">MyTravels</a>
                     <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse"
                         data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false"
                         aria-label="Toggle navigation">
@@ -33,11 +33,22 @@
                     <div class="navbar-collapse collapse" id="navbarCollapse" style="">
                         <ul class="navbar-nav me-auto mb-2 mb-md-0">
                             <li class="nav-item active">
-                                <a class="nav-link" aria-current="page" href=".">Book Tickets</a>
+                                <a class="nav-link" aria-current="page" href="." th:href="${'/' + operator.code}">Book Tickets</a>
                             </li>
                             <li class="nav-item active">
-                                <a class="nav-link" aria-current="page" href="manage_ticket.html">Print Tickets</a>
+                                <a class="nav-link" aria-current="page" href="manage_ticket.html" 
+                                th:href="${'/' + operator.code + '/bus-tickets/manage/print'}">Print Ticket</a>
                             </li>
+                            <!--/*/ 
+                            <li class="nav-item active">
+                                <a class="nav-link" aria-current="page" href="manage_ticket.html" 
+                                th:href="${'/' + operator.code + '/bus-tickets/manage/edit'}">Edit Ticket</a>
+                            </li>
+                            <li class="nav-item active">
+                                <a class="nav-link" aria-current="page" href="manage_ticket.html" 
+                                th:href="${'/' + operator.code + '/bus-tickets/manage/cancel'}">Cancel Ticket</a>
+                            </li>
+                           /*/-->
                         </ul>
                         <form class="d-flex">
                             <a class="btn btn-outline-success" href="login.html">Login</a>
@@ -49,12 +60,11 @@
 
         <main class="px-3">
             <div class="container pt-3 pb-2 mt-3 h-100">
-                <form class="row row-cols-lg-auto g-3 d-flex align-items-center justify-content-center">
-
+                <form id="booking-form" data-context="demobo" class="row row-cols-lg-auto g-3 d-flex align-items-center justify-content-center needs-validation" novalidate>
                     <div class=" col-lg-3">
                         <div class="form-floating">
-                            <select class="form-select" id="fromStation" aria-label="Floating label select example">
-                                <option selected>--</option>
+                            <select class="form-select" id="fromStation" aria-label="Floating label select example" required>
+                                <option selected value="">--</option>
                                 <option value="chennai" data-to="madurai,trichy" th:each="point : ${points}" 
                                 th:value="${point.station.shortName}"
                                 th:text="${point.station.name}"
@@ -63,6 +73,9 @@
                                 <option value="trichy" data-to="chennai">Trichy</option>
                             </select>
                             <label for="toStation">From</label>
+                            <div class="invalid-feedback">
+                                Please select a city
+                            </div>
                         </div>
                     </div>
 
@@ -73,18 +86,23 @@
 
                     <div class=" col-lg-3">
                         <div class="form-floating">
-                            <select class="form-select" id="toStation" aria-label="Floating label select example">
-                                <option selected>--</option>
+                            <select class="form-select" id="toStation" aria-label="Floating label select example" required>
+                                <option selected value="">--</option>
                             </select>
                             <label for="toStation">Destination</label>
+                            <div class="invalid-feedback">
+                                Please select a city
+                            </div>
                         </div>
                     </div>
 
                     <div class="col-lg-2">
                         <div class="form-floating ">
-                            <input type="date" class="form-control" style="padding-left: 10px" id="floatingInput">
+                            <input type="date" class="form-control" style="padding-left: 10px" id="jDate" required>
                             <label for="floatingInput">Journey Date</label>
-
+                            <div class="invalid-feedback">
+                                Please select Journey Date
+                            </div>
                         </div>
                     </div>
                     <div class=" col-lg-2">
@@ -95,8 +113,7 @@
                     </div>
 
                     <div>
-                        <a href="passengers.html" th:href="${'/tenant1/bus-tickets/from/madurai/to/chennai/passengers'}"
-                            class="btn btn-primary">Search</a>
+                        <button type="submit" class="btn btn-primary">Search</button>
                     </div>
                 </form>
             </div>

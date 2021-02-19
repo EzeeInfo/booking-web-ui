@@ -1,135 +1,60 @@
-<!doctype html>
-<html lang="en" class="h-100">
-
+<!DOCTYPE html>
+<html lang="en">
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
-    <meta name="generator" content="Hugo 0.79.0">
-    <title>Book Tickets | Parveen </title>
-
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <link href="https://use.fontawesome.com/releases/v5.0.4/css/all.css" rel="stylesheet">
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Operators</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
 
 </head>
-
-<body class="d-flex h-100 text-center">
-    <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
-
-
-        <main class="px-3">
-            <div class="container pt-3 pb-2 mt-3 h-100">
-                <div class="d-flex border-bottom mb-2 justify-content-between">
-                    <strong class="text-gray-dark pt-3">Operator</strong>
-                    <span class="btn btn-outline-primary mb-2" data-bs-toggle="modal" data-bs-target="#exampleModal"> <i
-                            class="fa fa-plus"></i> Add </span>
-                </div>
-
-                <table class="table border text-start">
-                    <thead>
-                        <tr>
-                            <th scope="col"> Code</th>
-                            <th scope="col"> Name</th>
-                            <th scope="col">Action</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-
-                    </tbody>
-                </table>
-
+<body>
+    <div class="container mt-5">
+      <div class="title text-center">
+        <h1 class="display-5">
+          <i class="fas fa-user-alt text-success"></i> <strong>Operators</strong>
+        </h1>
+      </div>
+      <div class="main row">
+        <div class="col-sm-12 col-md-4">
+          <form id="operator-form" autocomplete="off">
+            <div class="form-group">
+              <label for="title">Name</label>
+              <input type="text" id="title" class="form-control">
             </div>
-
-            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">Edit</h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        <div class="modal-body text-start">
-                            <div class="row">
-                                <div class="col-6">
-                                    <div class="mb-3">
-                                        <label for="exampleFormControlInput1" class="form-label">Operator Code</label>
-                                        <input type="text" class="form-control" id="operatorCode" placeholder="Enter your Code">
-                                    </div>
-                                </div>
-                                <div class="col-6">
-                                    <div class="mb-3">
-                                        <label for="exampleFormControlInput1" class="form-label">Google URL</label>
-                                        <input type="text" class="form-control" id="operatorName" placeholder="Enter your name">
-                                    </div>
-                                </div>
-                                <div class="col-6">
-                                    <div class="mb-3">
-                                        <label for="exampleFormControlInput1" class="form-label">Facebook URL</label>
-                                        <input type="text" class="form-control" id="operatorName" placeholder="Enter your name">
-                                    </div>
-                                </div>
-                                <div class="col-6">
-                                    <div class="mb-3">
-                                        <label for="exampleFormControlInput1" class="form-label">Operator Url</label>
-                                        <input type="text" class="form-control" id="operatorCode" placeholder="Enter your Code">
-                                    </div>
-                                </div>
-                                <div class="col-6">
-                                    <div class="mb-3">
-                                        <label for="exampleFormControlInput1" class="form-label">Zone</label>
-                                        <input type="text" class="form-control" id="operatorCode" placeholder="Enter your Code">
-                                    </div>
-                                </div>
-                                <div class="col-12 text-end mb-1">
-                                    <button type="button" class="btn btn-outline-primary mr-2" data-bs-dismiss="modal">Close</button>
-                                    <button type="button" class="btn btn-primary">Save changes</button>
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
+            <div class="form-group">
+              <label for="author">Position</label>
+              <input type="text" id="author" class="form-control">
             </div>
-
-            <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModal" aria-hidden="true">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="deleteModal">Delete</h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        <div class="modal-body text-start">
-                            <div class="row">
-                                <div class="col-12 text-center">
-                                    <div class="mb-3">
-                                        <p>Do you want delete your data ?</p>
-                                        <div>
-                                            <span class="btn btn-outline-primary mr-2" data-bs-dismiss="modal">No</span>
-                                            <span class="btn btn-primary" onclick="remove()">Yes</span>
-                                        </div>
-                                    </div>
-                                </div>
-
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
+            <div class="form-group">
+              <label for="isbn">operator #</label>
+              <input type="text" id="isbn" class="form-control">
             </div>
+  <!--      <input type="submit" value="Edit operator" class="btn btn-success btn-block edit-btn" disabled> -->
+            <input type="submit" value="Submit" class="btn btn-success btn-block add-btn sumbit_btn">
+          </form>
+        </div>
+        <div class="col-sm-12 col-md-8">
+          <table class="table table-striped mt-5">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Position</th>
+                <th>operator #</th>
+                <th></th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody id="operator-list">
+              
+            </tbody>
+          </table>
+        </div>
+      </div>
+      </div>    
 
-        </main>
 
-        <footer class="mt-auto text-white-50">
-            <span class="text-muted">Place sticky footer content here.</span>
-        </footer>
-    </div>
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous">
-    </script>
-    <script src="/js/operators.js"></script>
-
+<script src="/js/operators.js"></script>
 </body>
-
 </html>
