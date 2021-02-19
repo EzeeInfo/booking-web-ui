@@ -1,11 +1,9 @@
 "use strict";
-let seatLayoutList = JSON.parse(busMap).data;
-if (!Array.isArray(seatLayoutList)) {
-    seatLayoutList = [seatLayoutList];
-}
-console.log(seatLayoutList);
+let busDetails = JSON.parse(busMap).data;
 window.onload = () => {
+    // var busDetails = JSON.parse(data.busMap).data;
     let seatlayout = document.getElementById("seatlayout");
+    let seatLayoutList = busDetails.bus.seatLayoutList;
     const grouphByLayer = groupBy(seatLayoutList, (se) => se.layer);
     const oLayers = Array.from(grouphByLayer.keys()).sort();
     oLayers.map(ol => {
@@ -20,43 +18,55 @@ function createLayer(layer) {
     ol.className = "row cabin fuselage";
     // creating row on seet
     const rows = groupBy(layer, (se) => se.rowPos);
-    const oRows = Array.from(rows.keys()).sort();
-    oRows.map(r => {
-        const row = createRow(rows.get(r));
+    const orderedRows = Array.from(rows.keys()).sort((a, b) => a - b);
+    const rowCount = orderedRows[orderedRows.length - 1];
+    for (let i = 1; i <= rowCount; i++) {
+        const row = createRow(rows.get(i));
         ol.appendChild(row);
-    });
+    }
     div.appendChild(ol);
     return div;
 }
 function createRow(row) {
     const li = document.createElement("li");
-    li.className = "row";
     const ol = document.createElement("ol");
-    ol.className = "seats";
+    if (row) {
+        li.className = "row";
+        ol.className = "seats";
+        const cols = groupBy(row, (se) => se.colPos);
+        const orderedColumns = Array.from(cols.keys()).sort((a, b) => a - b);
+        const columnCount = orderedColumns[orderedColumns.length - 1];
+        for (let i = 1; i <= columnCount; i++) {
+            const col = createCol(cols.get(i));
+            ol.appendChild(col);
+        }
+    }
+    else {
+        li.className = "row no-row";
+        ol.className = "seats no-seats";
+    }
     // creating columns in a seat
-    const cols = groupBy(row, (se) => se.colPos);
-    const oCols = Array.from(cols.keys()).sort((a, b) => a - b);
-    console.log(oCols);
-    oCols.map(c => {
-        const col = createCol(cols.get(c));
-        ol.appendChild(col);
-    });
     li.appendChild(ol);
     return li;
 }
 function createCol(col) {
-    const seat = col[0];
     const li = document.createElement("li");
-    li.className = seat.busSeatType.code.includes("SL") ? "seat sleeper" : "seat";
-    const input = document.createElement("input");
-    input.id = seat.seatName;
-    input.setAttribute("type", "checkbox");
-    input.onclick = (e) => console.log(seat);
-    const label = document.createElement('label');
-    label.setAttribute('for', seat.seatName);
-    label.innerText = seat.seatName;
-    li.appendChild(input);
-    li.appendChild(label);
+    if (col) {
+        const seat = col[0];
+        li.className = seat.busSeatType.code.includes("SL") ? "seat sleeper" : "seat";
+        const input = document.createElement("input");
+        input.id = seat.seatName;
+        input.setAttribute("type", "checkbox");
+        input.onclick = (e) => console.log(seat);
+        const label = document.createElement('label');
+        label.setAttribute('for', seat.seatName);
+        label.innerText = seat.seatName;
+        li.appendChild(input);
+        li.appendChild(label);
+    }
+    else {
+        li.className = "seat no-seat";
+    }
     return li;
 }
 function groupBy(list, keyGetter) {
