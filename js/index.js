@@ -18,11 +18,11 @@
                 var journeyDate = new Date(document.getElementById("jDate").value);
                 var mm = journeyDate.getMonth() + 1; // getMonth() is zero-based
                 var dd = journeyDate.getDate();
-                var url = "/"
-                    + (form.dataset["context"] ? form.dataset["context"] : "")
-                    + "/bus-tickets/from/" + from
-                    + "/to/" + to
-                    + "?date=" + [(dd > 9 ? '' : '0') + dd,
+                var url = "/" +
+                    (form.dataset["context"] ? form.dataset["context"] : "") +
+                    "/bus-tickets/from/" + from +
+                    "/to/" + to +
+                    "?date=" + [(dd > 9 ? '' : '0') + dd,
                     (mm > 9 ? '' : '0') + mm,
                     journeyDate.getFullYear()
                 ].join('-');
