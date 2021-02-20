@@ -34,3 +34,17 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GH_PAGES_TOKEN }}
         PUBLISH_BRANCH: gh-pages
         PUBLISH_DIR: ./dist
+
+    - name: Copy to aws 
+      uses: appleboy/scp-action@master
+      env:
+        HOST: ${{ secrets.IP_ADDRESS }}
+        USERNAME: ${{ secrets.USER_NAME }}
+        PORT: ${{ secrets.PORT }}
+        KEY: ${{ secrets.P_KEY }}
+        PASSPHRASE: ${{ secrets.PASSPHRASE }}
+      with:
+        source: "dist/*"
+        passphrase: ${{ secrets.PASSPHRASE }}
+        target: "booking-web-ui"
+        strip_components: 1
