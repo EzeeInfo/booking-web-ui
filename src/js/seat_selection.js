@@ -1,5 +1,5 @@
 let busDetails = JSON.parse(busMap).data;
-
+let selectedSeats = [];
 window.onload = () => {
     // var busDetails = JSON.parse(data.busMap).data;
     let seatlayout = document.getElementById("seatlayout");
@@ -10,8 +10,46 @@ window.onload = () => {
         const layer = createLayer(grouphByLayer.get(ol));
         seatlayout.appendChild(layer);
     })
+
+    renderOptions(busDetails.toStation.stationPoint, "dropingPoint");
+    renderOptions(busDetails.fromStation.stationPoint, "pickupPoint");
+    document.getElementById("book").addEventListener("click", bookSeat)
 }
 
+function bookSeat(event) {
+    event.preventDefault();
+    //do booking logics & validations
+    //selectedSeats
+    console.log("event submited")
+}
+
+function fareDetails() {
+    let _selectedSeats = [],
+        selectedfare = 0,
+        selecteddiscount = 0,
+        selectedstax = 0,
+        selectedtotal = 0
+
+    selectedSeats.map(seat => {
+        _selectedSeats.push(seat.seatName);
+        selectedfare += seat.seatFare;
+        selectedstax += seat.serviceTax
+    })
+
+    let seats = _selectedSeats.join(",")
+
+    document.querySelector('#selectedSeats > span:nth-child(1)').innerHTML = seats;
+    document.querySelector('#selectedfare > span:nth-child(1)').innerHTML = selectedfare
+    document.querySelector('#selectedstax > span:nth-child(1)').innerHTML = selectedstax
+    document.querySelector('#selectedtotal > span:nth-child(1)').innerHTML = selectedfare + selectedstax
+
+
+    // selectedSeats
+    // selectedfare
+    // selecteddiscount
+    // selectedstax
+    // selectedtotal
+}
 
 function createLayer(layer) {
     const div = document.createElement("div");
@@ -50,8 +88,6 @@ function createRow(row) {
         li.className = "row no-row"
         ol.className = "seats no-seats"
     }
-    // creating columns in a seat
-
     li.appendChild(ol);
     return li
 }
@@ -64,7 +100,7 @@ function createCol(col) {
         const input = document.createElement("input")
         input.id = seat.seatName
         input.setAttribute("type", "checkbox");
-        input.onclick = (e) => console.log(seat);
+        input.onclick = (e) => selectSeat(e, seat);
         const label = document.createElement('label');
         label.setAttribute('for', seat.seatName)
         label.innerText = seat.seatName
@@ -75,6 +111,35 @@ function createCol(col) {
         li.className = "seat no-seat"
     }
     return li
+}
+
+function renderOptions(options, id) {
+    const select = document.getElementById(id);
+    options.forEach(option => {
+        const opt = document.createElement('option');
+        opt.value = option.code;
+        opt.innerHTML = option.name;
+        opt.onclick = () => selectPoint(option, id)
+        select.appendChild(opt);
+    })
+}
+
+function selectSeat(e, seat) {
+    e.stopPropagation();
+    if (selectedSeats.find(s => s.seatName == seat.seatName)) {
+        selectedSeats = selectedSeats.filter(s => s.seatName != seat.seatName)
+    } else {
+        selectedSeats.push(seat)
+    }
+    fareDetails()
+}
+
+function selectPoint(point, stage) {
+    if (stage == "pickupPoint") {
+        document.getElementById("boarding-address").innerHTML = point.address
+    } else {
+        document.getElementById("dropping-address").innerHTML = point.address
+    }
 }
 
 function groupBy(list, keyGetter) {
@@ -89,4 +154,30 @@ function groupBy(list, keyGetter) {
         }
     });
     return map;
+}
+
+
+function setCookie(name, value) {
+    var expires = "";
+    if (days) {
+        var date = new Date();
+        date.setTime(date.getTime() + (1 * 24 * 60 * 60 * 1000));
+        expires = "; expires=" + date.toUTCString();
+    }
+    document.cookie = name + "=" + (value || "") + expires + "; path=/demobo/bus-tickets/seats";
+}
+
+function getCookie(name) {
+    var nameEQ = name + "=";
+    var ca = document.cookie.split(';');
+    for (var i = 0; i < ca.length; i++) {
+        var c = ca[i];
+        while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+        if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+    }
+    return null;
+}
+
+function eraseCookie(name) {
+    document.cookie = name + '=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
 }
