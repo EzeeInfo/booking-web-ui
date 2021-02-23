@@ -1,6 +1,7 @@
 "use strict";
 let busDetails = JSON.parse(busMap).data;
 let selectedSeats = [];
+let pickup, drop;
 window.onload = () => {
     // var busDetails = JSON.parse(data.busMap).data;
     let seatlayout = document.getElementById("seatlayout");
@@ -20,6 +21,9 @@ function bookSeat(event) {
     //do booking logics & validations
     //selectedSeats
     console.log("event submited");
+    localStorage.setItem("SEATS", JSON.stringify(selectedSeats));
+    localStorage.setItem("PICKUP", JSON.stringify(pickup));
+    localStorage.setItem("DROP", JSON.stringify(drop));
 }
 function fareDetails() {
     let _selectedSeats = [], selectedfare = 0, selecteddiscount = 0, selectedstax = 0, selectedtotal = 0;
@@ -33,11 +37,6 @@ function fareDetails() {
     document.querySelector('#selectedfare > span:nth-child(1)').innerHTML = selectedfare;
     document.querySelector('#selectedstax > span:nth-child(1)').innerHTML = selectedstax;
     document.querySelector('#selectedtotal > span:nth-child(1)').innerHTML = selectedfare + selectedstax;
-    // selectedSeats
-    // selectedfare
-    // selecteddiscount
-    // selectedstax
-    // selectedtotal
 }
 function createLayer(layer) {
     const div = document.createElement("div");
@@ -118,9 +117,11 @@ function selectSeat(e, seat) {
 }
 function selectPoint(point, stage) {
     if (stage == "pickupPoint") {
+        pickup = point;
         document.getElementById("boarding-address").innerHTML = point.address;
     }
     else {
+        drop = point;
         document.getElementById("dropping-address").innerHTML = point.address;
     }
 }
